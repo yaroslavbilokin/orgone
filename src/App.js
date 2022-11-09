@@ -1,10 +1,10 @@
 import { useState } from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
-import LoginPage from './components/LoginPage';
-import MainPage from './components/MainPage';
+import LoginPage from './containers/LoginPage';
+import MainPage from './containers/MainPage';
 
 const App = () => {
-  const [userAuthenticated] = useState(false);
+  const [userAuthenticated] = useState(true);
 
   if (!userAuthenticated) {
     return (
@@ -19,10 +19,7 @@ const App = () => {
 
   return (
     <div className="app-container">
-      <Routes>
-        <Route path="/" element={<MainPage />} />
-        <Route path="*" element={<Navigate to="/" replace />} />
-      </Routes>
+      <MainPage />
     </div>
   );
 };

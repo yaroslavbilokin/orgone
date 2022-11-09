@@ -1,0 +1,75 @@
+@import '../../global/styles/palette';
+
+.header-container {
+  color: $white;
+  padding: 32px 16px 16px 16px;
+
+  .header-title__container {
+    display: flex;
+    justify-content: space-between;
+    height: 24px;
+    margin-bottom: 10px;
+
+    .header-title {
+      display: flex;
+
+      .arrow-back__container {
+        width: 24px;
+        height: 24px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-right: 8px;
+      }
+
+      .title {
+        display: flex;
+        align-items: center;
+        font-size: 20px;
+        font-weight: 500;
+        text-transform: uppercase;
+        height: 24px;
+      }
+    }
+  }
+
+  .progress-container {
+    .progress-line {
+      margin-bottom: 10px;
+    }
+
+    .progress-details {
+      display: flex;
+      justify-content: space-between;
+      height: 16px;
+
+      .left-side__details {
+        display: flex;
+        align-items: center;
+
+        .details__title {
+          margin-right: 4px;
+          font-size: 12px;
+          font-weight: 600;
+        }
+
+        .details__value {
+          font-size: 12px;
+          font-weight: 400;
+          opacity: 0.32;
+        }
+      }
+
+      .coin-amount {
+        display: flex;
+        align-items: center;
+
+        .coins {
+          margin-left: 4px;
+          font-size: 12px;
+          font-weight: 600;
+        }
+      }
+    }
+  }
+}
