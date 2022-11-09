@@ -1,0 +1,8 @@
+/build
+/src/vendors
+.eslintrc
+.prettierrc.js
+package-lock.json
+package.json
+public/index.html
+README.md
