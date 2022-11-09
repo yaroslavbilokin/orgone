@@ -2,7 +2,6 @@
   "name": "orgone",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://yaroslavbilokin.github.io",
   "dependencies": {
     "prettier": "^2.7.1",
     "rc-progress": "^3.4.1",
@@ -18,8 +17,6 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
     "prettier": "prettier --check . --ignore-path ./.prettierignore",
     "prettier-fix": "prettier . --write --ignore-path ./.prettierignore"
   },
@@ -40,8 +37,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "devDependencies": {
-    "gh-pages": "^4.0.0"
   }
 }
