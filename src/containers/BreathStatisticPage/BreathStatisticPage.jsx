@@ -1,7 +1,7 @@
 import './BreathStatisticPage.scss';
 
 const BreathStatisticPage = () => {
-  return <div>BreathStatisticPage</div>;
+  return <div />;
 };
 
 export default BreathStatisticPage;

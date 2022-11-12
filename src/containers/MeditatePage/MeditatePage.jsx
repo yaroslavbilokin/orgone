@@ -1,7 +1,7 @@
 import './MeditatePage.scss';
 
 const MeditatePage = () => {
-  return <div>MeditatePage</div>;
+  return <div />;
 };
 
 export default MeditatePage;

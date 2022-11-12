@@ -1,7 +1,7 @@
 import './MoveStatisticPage.scss';
 
 const MoveStatisticPage = () => {
-  return <div>MoveStatisticPage</div>;
+  return <div />;
 };
 
 export default MoveStatisticPage;

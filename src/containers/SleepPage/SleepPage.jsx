@@ -1,7 +1,7 @@
 import './SleepPage.scss';
 
 const SleepPage = () => {
-  return <div>SleepPage</div>;
+  return <div />;
 };
 
 export default SleepPage;

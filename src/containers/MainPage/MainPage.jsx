@@ -1,4 +1,4 @@
-import { Navigate, Route, Routes, useLocation } from 'react-router-dom';
+import { Navigate, Route, Routes } from 'react-router-dom';
 import HomePage from '../HomePage';
 import Header from '../../components/Header';
 import MovePage from '../MovePage';
@@ -11,13 +11,9 @@ import SleepStatisticPage from '../SleepStatisticPage';
 import MeditateStatisticPage from '../MeditateStatisticPage';
 
 const MainPage = () => {
-  const location = useLocation();
-
-  const isStatisticPage = location.pathname.includes('/statistic');
-
   return (
     <div>
-      {!isStatisticPage && <Header />}
+      <Header />
       <Routes>
         <Route index element={<HomePage />} />
         <Route path="move" element={<MovePage />} />

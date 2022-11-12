@@ -1,7 +1,7 @@
 import './SleepStatisticPage.scss';
 
 const SleepStatisticPage = () => {
-  return <div>SleepStatisticPage</div>;
+  return <div />;
 };
 
 export default SleepStatisticPage;

@@ -10,11 +10,12 @@ const Header = () => {
   const location = useLocation();
   const navigate = useNavigate();
 
+  const isStatisticPage = location.pathname.includes('/statistic');
+  const isMainPage = location.pathname === '/';
+
   const progressPercentValue = 86;
   const coinAmount = 273;
   const avatarLvl = 21;
-
-  const isMainPage = location.pathname === '/';
 
   const detailsTitle = isMainPage ? `LVL ${avatarLvl}` : 'TODAY';
 
@@ -24,7 +25,24 @@ const Header = () => {
     '/breath': 'Breath',
     '/sleep': 'Sleep',
     '/meditate': 'Meditate',
+    '/sleep/statistic': 'Sleep Statistic',
+    '/move/statistic': 'Move Statistic',
+    '/breath/statistic': 'Breath Statistic',
+    '/meditate/statistic': 'Meditate Statistic',
   };
+
+  if (isStatisticPage) {
+    return (
+      <div className="statistic-header__container">
+        <div className="header-title__container">
+          <div className="arrow-back__container">
+            <img src={arrowBackIcon} onClick={() => navigate(-1)} alt="arrow back" />
+          </div>
+          <div className="title">{titleStrategy[location.pathname]}</div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="header-container">

@@ -1,7 +1,7 @@
 import './MovePage.scss';
 
 const MovePage = () => {
-  return <div>MovePage</div>;
+  return <div />;
 };
 
 export default MovePage;
