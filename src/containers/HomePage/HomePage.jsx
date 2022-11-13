@@ -1,7 +1,7 @@
 import Controls from '../../components/Controls';
 import LineProgressBar from '../../components/ProgressBar/LineProgressBar';
 import CircleProgressBar from '../../components/ProgressBar/CircleProgressBar';
-import avatarModel from '../../global/icons/avatar.svg';
+import avatarModel from '../../global/icons/avatar.png';
 import './HomePage.scss';
 
 const HomePage = () => {
