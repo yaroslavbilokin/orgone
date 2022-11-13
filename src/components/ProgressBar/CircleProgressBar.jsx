@@ -1,4 +1,5 @@
 import { Circle } from 'rc-progress';
+import PropTypes from 'prop-types';
 import './CircleProgressBar.scss';
 
 const CircleProgressBar = ({ text, percent }) => (
@@ -15,5 +16,10 @@ const CircleProgressBar = ({ text, percent }) => (
     <div className="progressbar__percent">{percent}%</div>
   </div>
 );
+
+CircleProgressBar.propTypes = {
+  text: PropTypes.string.isRequired,
+  percent: PropTypes.number.isRequired,
+};
 
 export default CircleProgressBar;

@@ -1,5 +1,6 @@
 import { Line } from 'rc-progress';
 import './LineProgressBar.scss';
+import PropTypes from 'prop-types';
 
 const LineProgressBar = ({ text, percent, wordPosition = 'left' }) => (
   <div className={`line-progressbar__container ${wordPosition === 'right' && 'right'}`}>
@@ -14,5 +15,11 @@ const LineProgressBar = ({ text, percent, wordPosition = 'left' }) => (
     />
   </div>
 );
+
+LineProgressBar.propTypes = {
+  text: PropTypes.string.isRequired,
+  percent: PropTypes.number.isRequired,
+  wordPosition: PropTypes.string,
+};
 
 export default LineProgressBar;
