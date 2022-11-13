@@ -49,8 +49,8 @@ const Header = () => {
       <div className="header-title__container">
         <div className="header-title">
           {!isMainPage && (
-            <div className="arrow-back__container">
-              <img src={arrowBackIcon} onClick={() => navigate(-1)} alt="arrow back" />
+            <div className="arrow-back__container" onClick={() => navigate(-1)}>
+              <img src={arrowBackIcon} alt="arrow back" />
             </div>
           )}
           <div className="title">{titleStrategy[location.pathname]}</div>
