@@ -1,1 +1,48 @@
 @import '../../global/styles/palette';
+
+.sleep-page__container {
+  height: calc(100% - 108px);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  .sleep-page__controls {
+    padding: 0 16px 24px 16px;
+
+    .alarm-container {
+      margin-bottom: 24px;
+
+      .clock-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        .today,
+        .sleep {
+          font-size: 12px;
+          font-weight: 400;
+          color: $white;
+          opacity: 64%;
+          text-transform: uppercase;
+        }
+
+        .clock {
+          font-size: 32px;
+          font-weight: 600;
+          color: $white;
+          height: 56px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+      }
+
+      .alarm {
+        text-align: center;
+        color: $white;
+        text-transform: uppercase;
+        opacity: 64%;
+      }
+    }
+  }
+}

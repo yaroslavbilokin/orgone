@@ -49,8 +49,8 @@ const Header = () => {
       <div className="header-title__container">
         <div className="header-title">
           {!isMainPage && (
-            <div className="arrow-back__container">
-              <img src={arrowBackIcon} onClick={() => navigate(-1)} alt="arrow back" />
+            <div className="arrow-back__container" onClick={() => navigate(-1)}>
+              <img src={arrowBackIcon} alt="arrow back" />
             </div>
           )}
           <div className="title">{titleStrategy[location.pathname]}</div>
@@ -59,9 +59,10 @@ const Header = () => {
           {isMainPage ? (
             <img src={menuIcon} alt="menu" />
           ) : (
-            <Link to={`${location.pathname}/statistic`}>
-              <img src={statIcon} alt="statistic" />
-            </Link>
+            // <Link to={`${location.pathname}/statistic`}>
+            //   <img src={statIcon} alt="statistic" />
+            // </Link>
+            <img src={statIcon} alt="statistic" />
           )}
         </div>
       </div>

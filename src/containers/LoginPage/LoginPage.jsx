@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
 import { useNavigate } from 'react-router-dom';
 import { Line } from 'rc-progress';
 import logoIcon from '../../global/icons/logo-icon.svg';
@@ -15,17 +16,15 @@ const LoginPage = ({ setUserAuthenticated }) => {
   const [progressValue, setProgressValue] = useState(0);
   const [inputValue, setInputValue] = useState('');
 
-  const handleStart = () => {
+  const handleStart = useCallback(() => {
     if (isIntro) {
       setIsIntro(false);
-    } else {
-      if (inputValue === USER_CODE) {
-        localStorage.setItem(LOCAL_STORAGE_KEY, inputValue);
-        setUserAuthenticated(true);
-        navigate(HOME_PAGE_ROUTE);
-      }
+    } else if (inputValue === USER_CODE) {
+      localStorage.setItem(LOCAL_STORAGE_KEY, inputValue);
+      setUserAuthenticated(true);
+      navigate(HOME_PAGE_ROUTE);
     }
-  };
+  }, [isIntro, inputValue, navigate, setUserAuthenticated]);
   const handleInputChange = ({ target: { value } }) => {
     setInputValue(value);
   };
@@ -43,7 +42,7 @@ const LoginPage = ({ setUserAuthenticated }) => {
     if (progressValue === 100) {
       handleStart();
     }
-  }, [progressValue]);
+  }, [progressValue, handleStart]);
 
   if (isIntro) {
     return (
@@ -92,6 +91,10 @@ const LoginPage = ({ setUserAuthenticated }) => {
       </div>
     </div>
   );
+};
+
+LoginPage.propTypes = {
+  setUserAuthenticated: PropTypes.func.isRequired,
 };
 
 export default LoginPage;

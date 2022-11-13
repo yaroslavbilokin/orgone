@@ -1,0 +1,48 @@
+@import '../../global/styles/palette';
+
+.move-page__container {
+  height: calc(100% - 108px);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  .move-page__controls {
+    padding: 0 16px 24px 16px;
+
+    .steps-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      .today,
+      .steps {
+        font-size: 12px;
+        font-weight: 400;
+        color: $white;
+        opacity: 64%;
+        text-transform: uppercase;
+        padding: 0 20px;
+      }
+
+      .steps-count {
+        font-size: 32px;
+        font-weight: 600;
+        color: $white;
+        height: 56px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+    }
+
+    .steps-award {
+      font-size: 12px;
+      color: $white;
+      text-align: center;
+      margin-bottom: 25px;
+      opacity: 32%;
+      font-weight: 400;
+      text-transform: uppercase;
+    }
+  }
+}
