@@ -59,9 +59,10 @@ const Header = () => {
           {isMainPage ? (
             <img src={menuIcon} alt="menu" />
           ) : (
-            <Link to={`${location.pathname}/statistic`}>
+            // <Link to={`${location.pathname}/statistic`}>
+            //   <img src={statIcon} alt="statistic" />
+            // </Link>
               <img src={statIcon} alt="statistic" />
-            </Link>
           )}
         </div>
       </div>
