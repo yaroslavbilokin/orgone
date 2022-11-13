@@ -3,12 +3,12 @@ import { useNavigate } from 'react-router-dom';
 import { Line } from 'rc-progress';
 import logoIcon from '../../global/icons/logo-icon.svg';
 import logoNameIcon from '../../global/icons/logo-name.svg';
-import { HOME_PAGE_ROUTE } from '../../constants';
+import { HOME_PAGE_ROUTE, LOCAL_STORAGE_KEY } from '../../constants';
 import Button from '../../components/Button';
 import Input from '../../components/Input';
 import './LoginPage.scss';
 
-const LoginPage = () => {
+const LoginPage = ({ setUserAuthenticated }) => {
   const USER_CODE = '1234';
   const navigate = useNavigate();
   const [isIntro, setIsIntro] = useState(true);
@@ -20,6 +20,8 @@ const LoginPage = () => {
       setIsIntro(false);
     } else {
       if (inputValue === USER_CODE) {
+        localStorage.setItem(LOCAL_STORAGE_KEY, inputValue);
+        setUserAuthenticated(true);
         navigate(HOME_PAGE_ROUTE);
       }
     }
