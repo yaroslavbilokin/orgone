@@ -1,0 +1,25 @@
+@import '../../global/styles/palette';
+
+.circle-progressbar__container {
+  color: $white;
+  font-size: 12px;
+  position: relative;
+
+  .progressbar__label {
+    position: absolute;
+    top: 50%;
+    left: 20px;
+    transform: translateY(-50%);
+  }
+
+  .circle-progressbar {
+    transform: scaleX(-1);
+  }
+
+  .progressbar__percent {
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+  }
+}

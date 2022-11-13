@@ -1,4 +1,44 @@
 @import '../../global/styles/palette';
 
 .homepage-container {
+  height: calc(100vh - 180px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+
+  .homepage-container__row {
+    padding: 0 16px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+
+    .line-progressbar__container {
+      max-width: 20%;
+    }
+  }
+
+  .total-progressbar__container {
+    width: 100%;
+    min-height: 440px;
+    background-image: url('../../global/icons/background-icon.svg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    .total-progressbar {
+      width: 100%;
+      padding: 0 16px;
+    }
+  }
+
+  .avatar__image {
+    max-height: 100%;
+    position: absolute;
+  }
 }
