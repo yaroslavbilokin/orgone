@@ -4,7 +4,7 @@ import LoginPage from './containers/LoginPage';
 import MainPage from './containers/MainPage';
 
 const App = () => {
-  const [userAuthenticated] = useState(true);
+  const [userAuthenticated] = useState(false);
 
   if (!userAuthenticated) {
     return (

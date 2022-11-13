@@ -1,0 +1,33 @@
+@import '../../global/styles/palette';
+
+.input-container {
+  width: 100%;
+
+  input {
+    width: 100%;
+    padding: 16px 0;
+    text-align: center;
+    text-transform: uppercase;
+    outline: 1px solid $white;
+    outline-offset: -1px;
+    border: none;
+    border-radius: 100px;
+    background-color: transparent;
+    color: $white;
+    font-family: 'Neue Machina', sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 16px;
+    ::placeholder {
+      color: $light-grey;
+      opacity: 1;
+      font-family: 'Neue Machina', sans-serif;
+    }
+  }
+
+  textarea:focus,
+  input:focus {
+    outline: $white 1px solid;
+    outline-offset: -1px;
+  }
+}
