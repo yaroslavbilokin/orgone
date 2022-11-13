@@ -12,7 +12,7 @@ import MeditateStatisticPage from '../MeditateStatisticPage';
 
 const MainPage = () => {
   return (
-    <div>
+    <>
       <Header />
       <Routes>
         <Route index element={<HomePage />} />
@@ -26,7 +26,7 @@ const MainPage = () => {
         <Route path="meditate/statistic" element={<MeditateStatisticPage />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
-    </div>
+    </>
   );
 };
 

@@ -62,7 +62,7 @@ const Header = () => {
             // <Link to={`${location.pathname}/statistic`}>
             //   <img src={statIcon} alt="statistic" />
             // </Link>
-              <img src={statIcon} alt="statistic" />
+            <img src={statIcon} alt="statistic" />
           )}
         </div>
       </div>
