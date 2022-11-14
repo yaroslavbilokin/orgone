@@ -12,10 +12,11 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    max-height: calc(100% - 132px);
 
     .avatar__image {
-      max-height: 80%;
       object-fit: contain;
+      max-height: 80%;
     }
   }
   .meditate-player__container {
@@ -81,9 +82,8 @@
 
   .meditate-start__button-container {
     width: 100%;
-    height: 108px;
     display: flex;
     align-items: flex-end;
-    padding: 0 16px 24px;
+    padding: 60px 16px 24px 16px;
   }
 }
