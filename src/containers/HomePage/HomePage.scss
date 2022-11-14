@@ -1,7 +1,7 @@
 @import '../../global/styles/palette';
 
 .homepage-container {
-  height: calc(100vh - 180px);
+  height: calc(100% - 180px);
   display: flex;
   flex-direction: column;
   justify-content: center;
