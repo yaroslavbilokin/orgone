@@ -2,7 +2,7 @@ import { useState } from 'react';
 import AudioPlayer from 'react-h5-audio-player';
 import 'react-h5-audio-player/lib/styles.css';
 import avatarModel from '../../global/icons/avatar.png';
-import meditationTrack from '../../global/media/test.mp3';
+import meditationTrack from '../../global/media/meditation-track.mp3';
 import playIcon from '../../global/icons/play-icon.svg';
 import pauseIcon from '../../global/icons/pause-icon.svg';
 import replayIcon from '../../global/icons/replay-icon.svg';
