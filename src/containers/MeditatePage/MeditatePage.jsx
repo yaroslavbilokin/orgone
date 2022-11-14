@@ -23,17 +23,19 @@ const MeditatePage = () => {
       </div>
       {isMeditationStarted ? (
         <div className="meditate-player__container">
-          <AudioPlayer
-            className="meditate-player"
-            autoPlay
-            customIcons={{ play: playControl, pause: pauseControl }}
-            src={meditationTrack}
-            customVolumeControls={[]}
-            showJumpControls={false}
-            onPlay={(e) => setIsTrackEnded(false)}
-            onEnded={(e) => setIsTrackEnded(true)}
-            customAdditionalControls={[]}
-          />
+          <div className="meditate-player">
+            <AudioPlayer
+              className="player"
+              autoPlay
+              customIcons={{ play: playControl, pause: pauseControl }}
+              src={meditationTrack}
+              customVolumeControls={[]}
+              showJumpControls={false}
+              onPlay={(e) => setIsTrackEnded(false)}
+              onEnded={(e) => setIsTrackEnded(true)}
+              customAdditionalControls={[]}
+            />
+          </div>
         </div>
       ) : (
         <div className="meditate-start__button-container">

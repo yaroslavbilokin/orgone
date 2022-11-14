@@ -7,10 +7,8 @@
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  padding: 0 16px 24px;
 
   .avatar-image__container {
-    height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -20,59 +18,63 @@
       object-fit: contain;
     }
   }
-
   .meditate-player__container {
     width: 100%;
-    height: 108px;
-    position: relative;
+    padding: 0 16px 24px;
 
     .meditate-player {
       width: 100%;
-      background-color: $black;
-      box-shadow: none;
-      padding: 0;
+      height: 108px;
+      position: relative;
 
-      .rhap_time {
-        color: $white;
-        font-family: 'Inter', sans-serif;
-        font-weight: 600;
-        font-size: 12px;
-        line-height: 16px;
-        position: absolute;
-        bottom: 28px;
-
-        &.rhap_total-time {
-          right: 0;
-        }
-      }
-
-      .rhap_progress-container {
-        margin: 0;
-      }
-
-      .rhap_download-progress,
-      .rhap_progress-bar-show-download {
-        background-color: $grey;
-      }
-
-      .rhap_progress-filled {
-        background-color: $white;
-      }
-
-      .rhap_progress-indicator {
-        background-color: transparent;
-        border: 4px solid $white;
+      .player {
+        width: 100%;
+        background-color: $black;
         box-shadow: none;
-        width: 16px;
-        height: 16px;
-        top: -6px;
-        margin-left: -4px;
-      }
+        padding: 0;
 
-      .rhap_play-pause-button {
-        width: 72px;
-        height: 72px;
-        margin: 8px 0 0;
+        .rhap_time {
+          color: $white;
+          font-family: 'Inter', sans-serif;
+          font-weight: 600;
+          font-size: 12px;
+          line-height: 16px;
+          position: absolute;
+          bottom: 28px;
+
+          &.rhap_total-time {
+            right: 0;
+          }
+        }
+
+        .rhap_progress-container {
+          margin: 0;
+        }
+
+        .rhap_download-progress,
+        .rhap_progress-bar-show-download {
+          background-color: $grey;
+        }
+
+        .rhap_progress-filled {
+          background-color: $white;
+        }
+
+        .rhap_progress-indicator {
+          background-color: transparent;
+          border: 4px solid $white;
+          box-shadow: none;
+          width: 16px;
+          height: 16px;
+          top: -6px;
+          margin-left: -4px;
+        }
+
+        .rhap_play-pause-button {
+          width: 72px;
+          height: 72px;
+          margin: 8px 0 0;
+        }
       }
     }
   }
@@ -82,5 +84,6 @@
     height: 108px;
     display: flex;
     align-items: flex-end;
+    padding: 0 16px 24px;
   }
 }
