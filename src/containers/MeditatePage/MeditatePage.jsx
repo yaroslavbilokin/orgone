@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import AudioPlayer from 'react-h5-audio-player';
 import 'react-h5-audio-player/lib/styles.css';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 import avatarModel from '../../global/icons/avatar.png';
 import meditationTrack from '../../global/media/meditate/00-orgone-INTRO-v2.wav';
 import playIcon from '../../global/icons/play-icon.svg';
@@ -15,8 +15,11 @@ import './MeditatePage.scss';
 
 const MeditatePage = () => {
   const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
 
-  const [isMeditationStarted, setIsMeditationStarted] = useState(false);
+  const [isMeditationStarted, setIsMeditationStarted] = useState(
+    searchParams.get('start') === 'true',
+  );
   const [isTrackEnded, setIsTrackEnded] = useState(false);
   const [isCongratulationsModalShow, setIsCongratulationsModalShow] = useState(false);
   const [isHoldModalShow, setIsHoldModalShow] = useState(false);
@@ -30,7 +33,7 @@ const MeditatePage = () => {
   };
 
   const handleClickStart = () => {
-    navigate(BREATH_PAGE_ROUTE);
+    navigate(`${BREATH_PAGE_ROUTE}?start=true`);
   };
 
   const handleConfirmHold = () => {

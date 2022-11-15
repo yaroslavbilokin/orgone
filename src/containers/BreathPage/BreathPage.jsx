@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import AudioPlayer from 'react-h5-audio-player';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 import replayIcon from '../../global/icons/replay-icon.svg';
 import playIcon from '../../global/icons/play-icon.svg';
 import pauseIcon from '../../global/icons/pause-icon.svg';
@@ -14,8 +14,9 @@ import './BreathPage.scss';
 
 const BreathPage = () => {
   const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
 
-  const [isBreathStarted, setIsBreathStarted] = useState(false);
+  const [isBreathStarted, setIsBreathStarted] = useState(searchParams.get('start') === 'true');
   const [isTrackEnded, setIsTrackEnded] = useState(false);
   const [isCongratulationsModalShow, setIsCongratulationsModalShow] = useState(false);
   const [isHoldModalShow, setIsHoldModalShow] = useState(false);
@@ -32,7 +33,7 @@ const BreathPage = () => {
   };
 
   const handleClickStart = () => {
-    navigate(MEDITATE_PAGE_ROUTE);
+    navigate(`${MEDITATE_PAGE_ROUTE}?start=true`);
   };
 
   const handleConfirmHold = () => {
