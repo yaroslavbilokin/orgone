@@ -19,6 +19,7 @@
       max-height: 80%;
     }
   }
+
   .meditate-player__container {
     width: 100%;
     padding: 0 16px 24px;
@@ -85,5 +86,80 @@
     display: flex;
     align-items: flex-end;
     padding: 60px 16px 24px 16px;
+  }
+
+  .congratulations-modal-content {
+    .proceed-to {
+      color: $light-grey-2;
+      font-size: 12px;
+      line-height: 16px;
+      margin-bottom: 7px;
+    }
+
+    .proceed-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border: 1px solid $white;
+      border-radius: 100px;
+      height: 56px;
+      font-size: 14px;
+      line-height: 16px;
+
+      .proceed-title {
+        height: 48px;
+        margin-left: 24px;
+        color: $white;
+        display: flex;
+        align-items: center;
+        text-transform: uppercase;
+      }
+
+      .proceed-start {
+        height: 48px;
+        background-color: $white;
+        border-radius: 100px;
+        width: 144px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: $black;
+        margin-right: 4px;
+        text-transform: uppercase;
+      }
+    }
+  }
+
+  .hold-modal-content {
+    display: flex;
+    justify-content: space-between;
+    text-transform: uppercase;
+    font-size: 14px;
+    line-height: 16px;
+    font-weight: 700;
+
+    .confirm-btn {
+      width: 144.5px;
+      height: 48px;
+      background-color: $white;
+      border-radius: 100px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: $black;
+      border: 1px solid $black;
+    }
+
+    .cancel-btn {
+      width: 144.5px;
+      height: 48px;
+      background-color: $black;
+      border-radius: 100px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: $white;
+      border: 1px solid $white;
+    }
   }
 }

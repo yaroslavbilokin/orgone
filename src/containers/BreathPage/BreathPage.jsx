@@ -1,19 +1,70 @@
 import { useState } from 'react';
 import AudioPlayer from 'react-h5-audio-player';
+import { useNavigate } from 'react-router-dom';
 import replayIcon from '../../global/icons/replay-icon.svg';
 import playIcon from '../../global/icons/play-icon.svg';
 import pauseIcon from '../../global/icons/pause-icon.svg';
 import avatarModel from '../../global/icons/avatar.png';
 import Button from '../../components/Button';
-import meditationTrack from '../../global/media/meditation-track.mp3';
+import meditationTrack from '../../global/media/meditate/00-orgone-INTRO-v2.wav';
+import ModalWindow from '../../components/ModalWindow';
+import * as constants from './constants';
+import { HOME_PAGE_ROUTE, MEDITATE_PAGE_ROUTE } from '../../constants';
 import './BreathPage.scss';
 
 const BreathPage = () => {
+  const navigate = useNavigate();
+
   const [isBreathStarted, setIsBreathStarted] = useState(false);
   const [isTrackEnded, setIsTrackEnded] = useState(false);
+  const [isCongratulationsModalShow, setIsCongratulationsModalShow] = useState(false);
+  const [isHoldModalShow, setIsHoldModalShow] = useState(false);
 
   const playControl = <img src={isTrackEnded ? replayIcon : playIcon} alt="Play" />;
   const pauseControl = <img src={pauseIcon} alt="Pause" />;
+
+  const handleCloseCongratulationsModal = () => {
+    setIsCongratulationsModalShow(false);
+  };
+
+  const handleCloseHoldModal = () => {
+    setIsHoldModalShow(false);
+  };
+
+  const handleClickStart = () => {
+    navigate(MEDITATE_PAGE_ROUTE);
+  };
+
+  const handleConfirmHold = () => {
+    navigate(HOME_PAGE_ROUTE);
+  };
+
+  const handleCancelHold = () => {
+    setIsHoldModalShow(false);
+  };
+
+  const congratulationsModalContent = (
+    <div className="congratulations-modal-content">
+      <div className="proceed-to">Proceed to:</div>
+      <div className="proceed-container">
+        <div className="proceed-title">Meditate</div>
+        <div className="proceed-start" onClick={handleClickStart}>
+          Start
+        </div>
+      </div>
+    </div>
+  );
+
+  const holdModalContent = (
+    <div className="hold-modal-content">
+      <div className="confirm-btn" onClick={handleConfirmHold}>
+        Yes
+      </div>
+      <div className="cancel-btn" onClick={handleCancelHold}>
+        No
+      </div>
+    </div>
+  );
 
   return (
     <div className="breath-page__container">
@@ -30,8 +81,17 @@ const BreathPage = () => {
               src={meditationTrack}
               customVolumeControls={[]}
               showJumpControls={false}
-              onPlay={(e) => setIsTrackEnded(false)}
-              onEnded={(e) => setIsTrackEnded(true)}
+              onPlay={(e) => {
+                setIsTrackEnded(false);
+                setIsHoldModalShow(false);
+              }}
+              onEnded={(e) => {
+                setIsTrackEnded(true);
+                setIsCongratulationsModalShow(true);
+              }}
+              onPause={() => {
+                setIsHoldModalShow(true);
+              }}
               customAdditionalControls={[]}
             />
           </div>
@@ -40,6 +100,22 @@ const BreathPage = () => {
         <div className="breath-start__button-container">
           <Button text="START" onClick={() => setIsBreathStarted(true)} />
         </div>
+      )}
+      {isCongratulationsModalShow && (
+        <ModalWindow
+          title={constants.MODAL_WINDOW_CONGRATS_TITLE}
+          content={congratulationsModalContent}
+          subtitle={constants.MODAL_WINDOW_CONGRATS_SUBTITLE}
+          onClose={handleCloseCongratulationsModal}
+        />
+      )}
+      {isHoldModalShow && !isTrackEnded && (
+        <ModalWindow
+          title={constants.MODAL_WINDOW_HOLD_PRACTICE_TITLE}
+          content={holdModalContent}
+          subtitle={constants.MODAL_WINDOW_HOLD_PRACTICE_SUBTITLE}
+          onClose={handleCloseHoldModal}
+        />
       )}
     </div>
   );
