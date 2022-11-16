@@ -9,8 +9,8 @@ import Button from '../../components/Button';
 import ModalWindow from '../../components/ModalWindow';
 import * as constants from './constants';
 import { HOME_PAGE_ROUTE, MEDITATE_PAGE_ROUTE } from '../../constants';
-import './BreathPage.scss';
 import { getFromLocalStorage, setToLocalStorage } from '../../global/helpers';
+import './BreathPage.scss';
 
 const BreathPage = () => {
   const navigate = useNavigate();
