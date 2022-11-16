@@ -3,7 +3,6 @@ import AudioPlayer from 'react-h5-audio-player';
 import 'react-h5-audio-player/lib/styles.css';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import avatarModel from '../../global/icons/avatar.png';
-import meditationTrack from '../../global/media/meditate/00-orgone-INTRO-v2.wav';
 import playIcon from '../../global/icons/play-icon.svg';
 import pauseIcon from '../../global/icons/pause-icon.svg';
 import replayIcon from '../../global/icons/replay-icon.svg';
@@ -82,7 +81,7 @@ const MeditatePage = () => {
               className="player"
               autoPlay
               customIcons={{ play: playControl, pause: pauseControl }}
-              src={meditationTrack}
+              src="http://s3.amazonaws.com/orgone-app/02-orgone-GRATITUDE-v2.wav"
               customVolumeControls={[]}
               showJumpControls={false}
               onPlay={(e) => {

@@ -6,7 +6,6 @@ import playIcon from '../../global/icons/play-icon.svg';
 import pauseIcon from '../../global/icons/pause-icon.svg';
 import avatarModel from '../../global/icons/avatar.png';
 import Button from '../../components/Button';
-import meditationTrack from '../../global/media/meditate/00-orgone-INTRO-v2.wav';
 import ModalWindow from '../../components/ModalWindow';
 import * as constants from './constants';
 import { HOME_PAGE_ROUTE, MEDITATE_PAGE_ROUTE } from '../../constants';
@@ -79,7 +78,7 @@ const BreathPage = () => {
               className="player"
               autoPlay
               customIcons={{ play: playControl, pause: pauseControl }}
-              src={meditationTrack}
+              src="http://s3.amazonaws.com/orgone-app/02-orgone-GRATITUDE-v2.wav"
               customVolumeControls={[]}
               showJumpControls={false}
               onPlay={(e) => {
