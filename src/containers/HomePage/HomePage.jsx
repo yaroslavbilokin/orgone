@@ -1,22 +1,10 @@
-import { useState } from 'react';
 import Controls from '../../components/Controls';
 import LineProgressBar from '../../components/ProgressBar/LineProgressBar';
 import CircleProgressBar from '../../components/ProgressBar/CircleProgressBar';
 import avatarModel from '../../global/icons/avatar.png';
-import { getFromLocalStorage } from '../../global/helpers';
-import SurveyModal from '../../components/SurveyModal';
 import './HomePage.scss';
 
 const HomePage = () => {
-  const [surveyModalShow, setSurveyModalShow] = useState(true);
-  const isBreathWatched = !!getFromLocalStorage('breath-watched');
-  const isMeditationWatched = !!getFromLocalStorage('meditation-watched');
-  const isSurveyVoted = !!getFromLocalStorage('survey-voted');
-
-  const handleSurveyClose = () => {
-    setSurveyModalShow(false);
-  };
-
   return (
     <div className="homepage-container">
       <div className="homepage-container__row">
@@ -34,9 +22,6 @@ const HomePage = () => {
       </div>
       <img src={avatarModel} alt="avatar" className="avatar__image" />
       <Controls />
-      {surveyModalShow && isBreathWatched && isMeditationWatched && !isSurveyVoted && (
-        <SurveyModal onClose={handleSurveyClose} />
-      )}
     </div>
   );
 };

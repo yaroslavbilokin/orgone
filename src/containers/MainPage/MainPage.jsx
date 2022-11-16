@@ -9,6 +9,7 @@ import BreathStatisticPage from '../BreathStatisticPage';
 import MoveStatisticPage from '../MoveStatisticPage';
 import SleepStatisticPage from '../SleepStatisticPage';
 import MeditateStatisticPage from '../MeditateStatisticPage';
+import SurveyPage from '../SurveyPage/SurveyPage';
 
 const MainPage = () => {
   return (
@@ -24,6 +25,7 @@ const MainPage = () => {
         <Route path="sleep/statistic" element={<SleepStatisticPage />} />
         <Route path="meditate" element={<MeditatePage />} />
         <Route path="meditate/statistic" element={<MeditateStatisticPage />} />
+        <Route path="survey" element={<SurveyPage />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </>

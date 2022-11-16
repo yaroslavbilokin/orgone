@@ -26,7 +26,7 @@
     "arrow-body-style": "off",
     "global-require": "off",
     "react/react-in-jsx-scope": "off",
-    "no-unused-vars": "off",
+    "no-unused-vars": ["error", { "vars": "all", "args": "after-used", "ignoreRestSiblings": false }],
     "no-shadow": "off",
     "no-unused-expressions": "off",
     "react/require-default-props": 0

@@ -1,33 +1,28 @@
 @import '../../global/styles/palette';
 
-.survey-modal__container {
+.survey-page__container {
   width: 100%;
-  height: 100vh;
-  max-height: 100vh;
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 100;
+  height: 100%;
   background-color: $black;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 
-  .survey-modal__content {
+  .survey-page__content {
     background-image: url('../../global/icons/background-icon.svg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     min-height: 504px;
 
-    .survey-modal__header {
+    .survey-page__header {
       display: flex;
       justify-content: space-between;
       align-items: center;
       margin: 32px 16px 56px 16px;
       height: 24px;
 
-      .modal-title {
+      .survey-page__title {
         font-size: 20px;
         line-height: 24px;
         font-weight: 600;
@@ -35,7 +30,7 @@
         color: $white;
       }
 
-      .modal-close-icon__container {
+      .survey-close-icon__container {
         height: 24px;
         width: 24px;
         display: flex;
@@ -95,12 +90,4 @@
   .radio-checked {
     color: $white !important;
   }
-
-  //.MuiFormControlLabel-labelPlacementStart {
-  //  color: red;
-  //}
-  //
-  //.MuiFormControlLabel-labelPlacementStart.Mui-selected {
-  //  color: blue;
-  //}
 }

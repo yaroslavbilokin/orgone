@@ -1,10 +1,11 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { FormControlLabel, Radio, RadioGroup } from '@mui/material';
-import PropTypes from 'prop-types';
+import { getFromLocalStorage, setToLocalStorage } from '../../global/helpers';
 import modalCloseIcon from '../../global/icons/modal-close-icon.svg';
-import Button from '../Button';
-import './SurveyModal.scss';
-import { setToLocalStorage } from '../../global/helpers';
+import Button from '../../components/Button';
+import { HOME_PAGE_ROUTE } from '../../constants';
+import './SurveyPage.scss';
 
 const surveyOptions = [
   {
@@ -24,20 +25,29 @@ const surveyOptions = [
   },
 ];
 
-const SurveyModal = ({ onClose }) => {
+const SurveyPage = () => {
+  const navigate = useNavigate();
+  const isSurveyVoted = !!getFromLocalStorage('survey-voted');
+
   const [selectedOption, setSelectedOption] = useState(surveyOptions[0].title);
+
+  useEffect(() => {
+    if (isSurveyVoted) {
+      navigate(HOME_PAGE_ROUTE);
+    }
+  }, [navigate, isSurveyVoted]);
 
   const handleSend = () => {
     setToLocalStorage('survey-voted', true);
-    onClose();
+    navigate(HOME_PAGE_ROUTE);
   };
 
   return (
-    <div className="survey-modal__container">
-      <div className="survey-modal__content">
-        <div className="survey-modal__header">
-          <div className="modal-title">Survey</div>
-          <div onClick={onClose} className="modal-close-icon__container">
+    <div className="survey-page__container">
+      <div className="survey-page__content">
+        <div className="survey-page__header">
+          <div className="survey-page__title">Survey</div>
+          <div onClick={() => navigate(HOME_PAGE_ROUTE)} className="survey-close-icon__container">
             <img src={modalCloseIcon} alt="close icon" />
           </div>
         </div>
@@ -73,8 +83,4 @@ const SurveyModal = ({ onClose }) => {
   );
 };
 
-SurveyModal.propTypes = {
-  onClose: PropTypes.func.isRequired,
-};
-
-export default SurveyModal;
+export default SurveyPage;

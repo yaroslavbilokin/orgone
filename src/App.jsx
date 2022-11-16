@@ -2,7 +2,6 @@ import { useState } from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import LoginPage from './containers/LoginPage';
 import MainPage from './containers/MainPage';
-import { LOCAL_STORAGE_KEY } from './constants';
 import { getFromLocalStorage } from './global/helpers';
 
 const App = () => {

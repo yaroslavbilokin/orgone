@@ -29,6 +29,12 @@
         border-bottom-right-radius: 35% 50%;
         border-top-right-radius: 35% 50%;
       }
+
+      &:active,
+      &:focus {
+        outline: 0;
+        border: none;
+      }
     }
   }
 }

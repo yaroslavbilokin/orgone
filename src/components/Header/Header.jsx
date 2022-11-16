@@ -1,4 +1,4 @@
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { Line } from 'rc-progress';
 import arrowBackIcon from '../../global/icons/arrow-back.svg';
 import statIcon from '../../global/icons/stat-icon.svg';
@@ -12,6 +12,7 @@ const Header = () => {
 
   const isStatisticPage = location.pathname.includes('/statistic');
   const isMainPage = location.pathname === '/';
+  const isSurveyPage = location.pathname === '/survey';
 
   const progressPercentValue = 86;
   const coinAmount = 273;
@@ -30,6 +31,10 @@ const Header = () => {
     '/breath/statistic': 'Breath Statistic',
     '/meditate/statistic': 'Meditate Statistic',
   };
+
+  if (isSurveyPage) {
+    return null;
+  }
 
   if (isStatisticPage) {
     return (

@@ -8,7 +8,7 @@ import avatarModel from '../../global/icons/avatar.png';
 import Button from '../../components/Button';
 import ModalWindow from '../../components/ModalWindow';
 import * as constants from './constants';
-import { HOME_PAGE_ROUTE, MEDITATE_PAGE_ROUTE } from '../../constants';
+import { HOME_PAGE_ROUTE, MEDITATE_PAGE_ROUTE, SURVEY_PAGE_ROUTE } from '../../constants';
 import { getFromLocalStorage, setToLocalStorage } from '../../global/helpers';
 import './BreathPage.scss';
 
@@ -25,6 +25,7 @@ const BreathPage = () => {
   const pauseControl = <img src={pauseIcon} alt="Pause" />;
 
   const isMeditationWatched = !!getFromLocalStorage('meditation-watched');
+  const isSurveyVoted = !!getFromLocalStorage('survey-voted');
 
   const handleCloseCongratulationsModal = () => {
     setIsCongratulationsModalShow(false);
@@ -92,14 +93,17 @@ const BreathPage = () => {
               src="https://orgone-app.s3.eu-central-1.amazonaws.com/02-orgone-GRATITUDE-v2.wav"
               customVolumeControls={[]}
               showJumpControls={false}
-              onPlay={(e) => {
+              onPlay={() => {
                 setIsTrackEnded(false);
                 setIsHoldModalShow(false);
               }}
-              onEnded={(e) => {
+              onEnded={() => {
                 setIsTrackEnded(true);
                 setIsCongratulationsModalShow(true);
                 setToLocalStorage('breath-watched', true);
+                if (isMeditationWatched && !isSurveyVoted) {
+                  navigate(SURVEY_PAGE_ROUTE);
+                }
               }}
               onPause={() => {
                 setIsHoldModalShow(true);
