@@ -10,11 +10,12 @@ import ModalWindow from '../../components/ModalWindow';
 import * as constants from './constants';
 import { HOME_PAGE_ROUTE, MEDITATE_PAGE_ROUTE } from '../../constants';
 import './BreathPage.scss';
+import { getFromLocalStorage, setToLocalStorage } from '../../global/helpers';
 
 const BreathPage = () => {
   const navigate = useNavigate();
-  const [searchParams] = useSearchParams();
 
+  const [searchParams] = useSearchParams();
   const [isBreathStarted, setIsBreathStarted] = useState(searchParams.get('start') === 'true');
   const [isTrackEnded, setIsTrackEnded] = useState(false);
   const [isCongratulationsModalShow, setIsCongratulationsModalShow] = useState(false);
@@ -22,6 +23,8 @@ const BreathPage = () => {
 
   const playControl = <img src={isTrackEnded ? replayIcon : playIcon} alt="Play" />;
   const pauseControl = <img src={pauseIcon} alt="Pause" />;
+
+  const isMeditationWatched = !!getFromLocalStorage('meditation-watched');
 
   const handleCloseCongratulationsModal = () => {
     setIsCongratulationsModalShow(false);
@@ -51,6 +54,14 @@ const BreathPage = () => {
         <div className="proceed-start" onClick={handleClickStart}>
           Start
         </div>
+      </div>
+    </div>
+  );
+
+  const congratulationsWithoutProceedModalContent = (
+    <div className="congratulations-without-proceed-content">
+      <div onClick={() => navigate(HOME_PAGE_ROUTE)} className="confirm-button">
+        Ok, nice
       </div>
     </div>
   );
@@ -88,6 +99,7 @@ const BreathPage = () => {
               onEnded={(e) => {
                 setIsTrackEnded(true);
                 setIsCongratulationsModalShow(true);
+                setToLocalStorage('breath-watched', true);
               }}
               onPause={() => {
                 setIsHoldModalShow(true);
@@ -104,7 +116,11 @@ const BreathPage = () => {
       {isCongratulationsModalShow && (
         <ModalWindow
           title={constants.MODAL_WINDOW_CONGRATS_TITLE}
-          content={congratulationsModalContent}
+          content={
+            !isMeditationWatched
+              ? congratulationsModalContent
+              : congratulationsWithoutProceedModalContent
+          }
           subtitle={constants.MODAL_WINDOW_CONGRATS_SUBTITLE}
           onClose={handleCloseCongratulationsModal}
         />

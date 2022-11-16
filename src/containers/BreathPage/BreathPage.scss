@@ -130,6 +130,23 @@
     }
   }
 
+  .congratulations-without-proceed-content {
+    .confirm-button {
+      border-radius: 100px;
+      border: 1px solid $white;
+      height: 48px;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-transform: uppercase;
+      font-size: 14px;
+      line-height: 16px;
+      font-weight: 700;
+      color: $white;
+    }
+  }
+
   .hold-modal-content {
     display: flex;
     justify-content: space-between;

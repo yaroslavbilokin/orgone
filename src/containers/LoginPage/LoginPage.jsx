@@ -8,6 +8,7 @@ import { HOME_PAGE_ROUTE, LOCAL_STORAGE_KEY } from '../../constants';
 import Button from '../../components/Button';
 import Input from '../../components/Input';
 import './LoginPage.scss';
+import { setToLocalStorage } from '../../global/helpers';
 
 const LoginPage = ({ setUserAuthenticated }) => {
   const USER_CODE = '1234';
@@ -20,6 +21,7 @@ const LoginPage = ({ setUserAuthenticated }) => {
     if (isIntro) {
       setIsIntro(false);
     } else if (inputValue === USER_CODE) {
+      setToLocalStorage('user-code', inputValue);
       localStorage.setItem(LOCAL_STORAGE_KEY, inputValue);
       setUserAuthenticated(true);
       navigate(HOME_PAGE_ROUTE);

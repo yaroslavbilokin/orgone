@@ -3,9 +3,10 @@ import { Routes, Route, Navigate } from 'react-router-dom';
 import LoginPage from './containers/LoginPage';
 import MainPage from './containers/MainPage';
 import { LOCAL_STORAGE_KEY } from './constants';
+import { getFromLocalStorage } from './global/helpers';
 
 const App = () => {
-  const userCode = localStorage.getItem(LOCAL_STORAGE_KEY);
+  const userCode = getFromLocalStorage('user-code');
   const [userAuthenticated, setUserAuthenticated] = useState(!!userCode || false);
 
   if (!userAuthenticated) {

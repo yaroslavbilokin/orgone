@@ -1,4 +1,3 @@
-import React from 'react';
 import PropTypes from 'prop-types';
 import modalCloseIcon from '../../global/icons/modal-close-icon.svg';
 import './ModalWindow.scss';

@@ -58,7 +58,6 @@
         border: 1px solid $white;
         border-radius: 12px;
         padding: 32px 24px;
-        height: 312px;
         background-color: $black;
       }
     }
@@ -67,4 +66,41 @@
   .send-button__container {
     margin: 0 16px 24px 16px;
   }
+
+  .survey-control-root {
+    justify-content: space-between;
+    margin-bottom: 12px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  .survey-control-label {
+    color: $light-grey;
+    font-size: 20px;
+    font-family: 'Neue Machina', sans-serif;
+  }
+
+  .survey-control-label__selected {
+    color: $white;
+    font-size: 20px;
+    font-family: 'Neue Machina', sans-serif;
+  }
+
+  .radio-root {
+    color: $light-grey;
+  }
+
+  .radio-checked {
+    color: $white !important;
+  }
+
+  //.MuiFormControlLabel-labelPlacementStart {
+  //  color: red;
+  //}
+  //
+  //.MuiFormControlLabel-labelPlacementStart.Mui-selected {
+  //  color: blue;
+  //}
 }
