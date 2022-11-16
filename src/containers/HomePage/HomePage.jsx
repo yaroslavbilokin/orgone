@@ -3,6 +3,7 @@ import LineProgressBar from '../../components/ProgressBar/LineProgressBar';
 import CircleProgressBar from '../../components/ProgressBar/CircleProgressBar';
 import avatarModel from '../../global/icons/avatar.png';
 import './HomePage.scss';
+import SurveyModal from '../../components/SurveyModal';
 
 const HomePage = () => {
   return (
