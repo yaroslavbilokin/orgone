@@ -81,7 +81,7 @@ const MeditatePage = () => {
               className="player"
               autoPlay
               customIcons={{ play: playControl, pause: pauseControl }}
-              src="http://s3.amazonaws.com/orgone-app/02-orgone-GRATITUDE-v2.wav"
+              src="https://orgone-app.s3.eu-central-1.amazonaws.com/02-orgone-GRATITUDE-v2.wav"
               customVolumeControls={[]}
               showJumpControls={false}
               onPlay={(e) => {
