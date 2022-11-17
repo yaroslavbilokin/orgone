@@ -6,6 +6,7 @@
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
     "@mui/material": "^5.10.14",
+    "emailjs-com": "^3.2.0",
     "prettier": "^2.7.1",
     "prop-types": "^15.8.1",
     "rc-progress": "^3.4.1",

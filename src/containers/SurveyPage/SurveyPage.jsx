@@ -1,10 +1,16 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import emailJS from 'emailjs-com';
 import { FormControlLabel, Radio, RadioGroup } from '@mui/material';
 import { getFromLocalStorage, setToLocalStorage } from '../../global/helpers';
+import {
+  EMAIL_JS_SERVICE_ID,
+  EMAIL_JS_TEMPLATE_ID,
+  EMAIL_JS_USER_ID,
+  HOME_PAGE_ROUTE,
+} from '../../constants';
 import modalCloseIcon from '../../global/icons/modal-close-icon.svg';
 import Button from '../../components/Button';
-import { HOME_PAGE_ROUTE } from '../../constants';
 import './SurveyPage.scss';
 
 const surveyOptions = [
@@ -37,9 +43,19 @@ const SurveyPage = () => {
     }
   }, [navigate, isSurveyVoted]);
 
-  const handleSend = () => {
-    setToLocalStorage('survey-voted', true);
-    navigate(HOME_PAGE_ROUTE);
+  const handleSend = async () => {
+    try {
+      await emailJS.send(
+        EMAIL_JS_SERVICE_ID,
+        EMAIL_JS_TEMPLATE_ID,
+        { reply: selectedOption },
+        EMAIL_JS_USER_ID,
+      );
+      setToLocalStorage('survey-voted', true);
+      navigate(HOME_PAGE_ROUTE);
+    } catch (err) {
+      navigate(HOME_PAGE_ROUTE);
+    }
   };
 
   return (
