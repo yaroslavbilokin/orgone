@@ -39,12 +39,12 @@ const MeditatePage = () => {
     navigate(`${BREATH_PAGE_ROUTE}?start=true`);
   };
 
-  const handleConfirmHold = () => {
-    navigate(HOME_PAGE_ROUTE);
-  };
-
   const handleCancelHold = () => {
     setIsHoldModalShow(false);
+  };
+
+  const handleConfirmHold = () => {
+    navigate(HOME_PAGE_ROUTE);
   };
 
   const congratulationsModalContent = (
