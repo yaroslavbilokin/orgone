@@ -9,7 +9,7 @@ import Button from '../../components/Button';
 import ModalWindow from '../../components/ModalWindow';
 import * as constants from './constants';
 import { HOME_PAGE_ROUTE, MEDITATE_PAGE_ROUTE, SURVEY_PAGE_ROUTE } from '../../constants';
-import { getFromLocalStorage, setToLocalStorage } from '../../global/helpers';
+import { getFromLocalStorage, getMeditationURL, setToLocalStorage } from '../../global/helpers';
 import './BreathPage.scss';
 
 const BreathPage = () => {
@@ -20,6 +20,8 @@ const BreathPage = () => {
   const [isTrackEnded, setIsTrackEnded] = useState(false);
   const [isCongratulationsModalShow, setIsCongratulationsModalShow] = useState(false);
   const [isHoldModalShow, setIsHoldModalShow] = useState(false);
+
+  const meditationURL = getMeditationURL();
 
   const playControl = <img src={isTrackEnded ? replayIcon : playIcon} alt="Play" />;
   const pauseControl = <img src={pauseIcon} alt="Pause" />;
@@ -90,7 +92,7 @@ const BreathPage = () => {
               className="player"
               autoPlay
               customIcons={{ play: playControl, pause: pauseControl }}
-              src="https://orgone-app.s3.eu-central-1.amazonaws.com/02-orgone-GRATITUDE-v2.wav"
+              src={meditationURL}
               customVolumeControls={[]}
               showJumpControls={false}
               onPlay={() => {

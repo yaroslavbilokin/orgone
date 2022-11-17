@@ -11,6 +11,7 @@ import {
 } from '../../constants';
 import modalCloseIcon from '../../global/icons/modal-close-icon.svg';
 import Button from '../../components/Button';
+import Loader from '../../components/Loader';
 import './SurveyPage.scss';
 
 const surveyOptions = [
@@ -36,6 +37,7 @@ const SurveyPage = () => {
   const isSurveyVoted = !!getFromLocalStorage('survey-voted');
 
   const [selectedOption, setSelectedOption] = useState(surveyOptions[0].title);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     if (isSurveyVoted) {
@@ -45,6 +47,7 @@ const SurveyPage = () => {
 
   const handleSend = async () => {
     try {
+      setLoading(true);
       await emailJS.send(
         EMAIL_JS_SERVICE_ID,
         EMAIL_JS_TEMPLATE_ID,
@@ -52,8 +55,10 @@ const SurveyPage = () => {
         EMAIL_JS_USER_ID,
       );
       setToLocalStorage('survey-voted', true);
+      setLoading(false);
       navigate(HOME_PAGE_ROUTE);
     } catch (err) {
+      setLoading(false);
       navigate(HOME_PAGE_ROUTE);
     }
   };
@@ -95,6 +100,7 @@ const SurveyPage = () => {
       <div className="send-button__container">
         <Button onClick={handleSend} text="Send" />
       </div>
+      {loading && <Loader />}
     </div>
   );
 };
