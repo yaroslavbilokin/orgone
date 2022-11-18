@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { Navigate, Route, Routes } from 'react-router-dom';
 import HomePage from '../HomePage';
 import Header from '../../components/Header';
@@ -10,8 +11,22 @@ import MoveStatisticPage from '../MoveStatisticPage';
 import SleepStatisticPage from '../SleepStatisticPage';
 import MeditateStatisticPage from '../MeditateStatisticPage';
 import SurveyPage from '../SurveyPage/SurveyPage';
+import { getFromLocalStorage, setToLocalStorage } from '../../global/helpers';
 
 const MainPage = () => {
+  useEffect(() => {
+    if (!getFromLocalStorage('coins')) {
+      setToLocalStorage('coins', 0);
+      setToLocalStorage('move-steps', 0);
+      setToLocalStorage('move-progress', 0);
+      setToLocalStorage('sleep-progress', 0);
+      setToLocalStorage('breath-progress', 0);
+      setToLocalStorage('meditate-progress', 0);
+      setToLocalStorage('level', 1);
+      setToLocalStorage('level-progress', 0);
+    }
+  }, []);
+
   return (
     <>
       <Header />

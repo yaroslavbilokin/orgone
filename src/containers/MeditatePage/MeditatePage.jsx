@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 import AudioPlayer from 'react-h5-audio-player';
 import 'react-h5-audio-player/lib/styles.css';
 import { useNavigate, useSearchParams } from 'react-router-dom';
@@ -10,7 +10,12 @@ import Button from '../../components/Button';
 import { BREATH_PAGE_ROUTE, HOME_PAGE_ROUTE, SURVEY_PAGE_ROUTE } from '../../constants';
 import ModalWindow from '../../components/ModalWindow';
 import * as constants from '../BreathPage/constants';
-import { getFromLocalStorage, getMeditationURL, setToLocalStorage } from '../../global/helpers';
+import {
+  calculateUserRewardsOnMeditationCompleting,
+  getFromLocalStorage,
+  getMeditationURL,
+  setToLocalStorage,
+} from '../../global/helpers';
 import './MeditatePage.scss';
 
 const MeditatePage = () => {
@@ -24,7 +29,7 @@ const MeditatePage = () => {
   const [isCongratulationsModalShow, setIsCongratulationsModalShow] = useState(false);
   const [isHoldModalShow, setIsHoldModalShow] = useState(false);
 
-  const meditationURL = getMeditationURL();
+  const meditationURL = useMemo(() => getMeditationURL(), []);
 
   const isBreathWatched = !!getFromLocalStorage('breath-watched');
   const isSurveyVoted = !!getFromLocalStorage('survey-voted');
@@ -109,6 +114,7 @@ const MeditatePage = () => {
                 if (isBreathWatched && !isSurveyVoted) {
                   navigate(SURVEY_PAGE_ROUTE);
                 }
+                calculateUserRewardsOnMeditationCompleting();
               }}
               onPause={() => {
                 setIsHoldModalShow(true);

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 import AudioPlayer from 'react-h5-audio-player';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import replayIcon from '../../global/icons/replay-icon.svg';
@@ -9,7 +9,12 @@ import Button from '../../components/Button';
 import ModalWindow from '../../components/ModalWindow';
 import * as constants from './constants';
 import { HOME_PAGE_ROUTE, MEDITATE_PAGE_ROUTE, SURVEY_PAGE_ROUTE } from '../../constants';
-import { getFromLocalStorage, getMeditationURL, setToLocalStorage } from '../../global/helpers';
+import {
+  calculateUserRewardsOnBreathCompleting,
+  getFromLocalStorage,
+  getMeditationURL,
+  setToLocalStorage,
+} from '../../global/helpers';
 import './BreathPage.scss';
 
 const BreathPage = () => {
@@ -21,13 +26,13 @@ const BreathPage = () => {
   const [isCongratulationsModalShow, setIsCongratulationsModalShow] = useState(false);
   const [isHoldModalShow, setIsHoldModalShow] = useState(false);
 
-  const meditationURL = getMeditationURL();
-
   const playControl = <img src={isTrackEnded ? replayIcon : playIcon} alt="Play" />;
   const pauseControl = <img src={pauseIcon} alt="Pause" />;
 
   const isMeditationWatched = !!getFromLocalStorage('meditation-watched');
   const isSurveyVoted = !!getFromLocalStorage('survey-voted');
+
+  const meditationURL = useMemo(() => getMeditationURL(), []);
 
   const handleCloseCongratulationsModal = () => {
     setIsCongratulationsModalShow(false);
@@ -106,6 +111,7 @@ const BreathPage = () => {
                 if (isMeditationWatched && !isSurveyVoted) {
                   navigate(SURVEY_PAGE_ROUTE);
                 }
+                calculateUserRewardsOnBreathCompleting();
               }}
               onPause={() => {
                 setIsHoldModalShow(true);

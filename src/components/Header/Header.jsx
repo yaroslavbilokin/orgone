@@ -4,6 +4,7 @@ import arrowBackIcon from '../../global/icons/arrow-back.svg';
 import statIcon from '../../global/icons/stat-icon.svg';
 import menuIcon from '../../global/icons/menu-icon.svg';
 import coinIcon from '../../global/icons/coin-icon.svg';
+import { getFromLocalStorage } from '../../global/helpers';
 import './Header.scss';
 
 const Header = () => {
@@ -14,9 +15,8 @@ const Header = () => {
   const isMainPage = location.pathname === '/';
   const isSurveyPage = location.pathname === '/survey';
 
-  const progressPercentValue = 86;
-  const coinAmount = 273;
-  const avatarLvl = 21;
+  const coinAmount = getFromLocalStorage('coins') || 0;
+  const avatarLvl = getFromLocalStorage('level') || 0;
 
   const detailsTitle = isMainPage ? `LVL ${avatarLvl}` : 'TODAY';
 
@@ -30,6 +30,14 @@ const Header = () => {
     '/move/statistic': 'Move Statistic',
     '/breath/statistic': 'Breath Statistic',
     '/meditate/statistic': 'Meditate Statistic',
+  };
+
+  const progressBarStrategy = {
+    '/': getFromLocalStorage('level-progress') || 0,
+    '/move': getFromLocalStorage('move-progress') || 0,
+    '/breath': getFromLocalStorage('breath-progress') || 0,
+    '/sleep': getFromLocalStorage('sleep-progress') || 0,
+    '/meditate': getFromLocalStorage('meditate-progress') || 0,
   };
 
   if (isSurveyPage) {
@@ -74,7 +82,7 @@ const Header = () => {
       <div className="progress-container">
         <div className="progress-line">
           <Line
-            percent={progressPercentValue}
+            percent={progressBarStrategy[location.pathname]}
             trailColor="#37393A"
             strokeColor="#ffffff"
             trailWidth={1}
@@ -84,7 +92,7 @@ const Header = () => {
         <div className="progress-details">
           <div className="left-side__details">
             <div className="details__title">{detailsTitle}</div>
-            <div className="details__value">{`${progressPercentValue}%`}</div>
+            <div className="details__value">{`${progressBarStrategy[location.pathname]}%`}</div>
           </div>
           <div className="coin-amount">
             <img src={coinIcon} alt="coin icon" />

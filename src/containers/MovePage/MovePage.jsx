@@ -1,5 +1,6 @@
 import './MovePage.scss';
 import Button from '../../components/Button';
+import { getFromLocalStorage } from '../../global/helpers';
 
 const MovePage = () => {
   return (
@@ -8,7 +9,7 @@ const MovePage = () => {
       <div className="move-page__controls">
         <div className="steps-container">
           <div className="today">Today</div>
-          <div className="steps-count">4567</div>
+          <div className="steps-count">{getFromLocalStorage('move-steps') || 0}</div>
           <div className="steps">Steps</div>
         </div>
         <div className="steps-award">500 STEPS - 1COIN</div>

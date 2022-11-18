@@ -36,3 +36,72 @@ export const getMeditationURL = () => {
   ];
   return availableMeditations[Math.floor(Math.random() * availableMeditations.length)];
 };
+
+/**
+ * The function calculates total user progress.
+ * @param moveProgress: number // user move progress
+ * @param breathProgress: number // user breath progress
+ * @param sleepProgress: number // user sleep progress
+ * @param meditateProgress: number // user meditate progress
+ * @returns number
+ */
+export const calculateTotalProgress = (
+  moveProgress,
+  breathProgress,
+  sleepProgress,
+  meditateProgress,
+) => {
+  return moveProgress / 4 + breathProgress / 4 + sleepProgress / 4 + meditateProgress / 4;
+};
+
+/**
+ * The function calculates user rewards on breath session complete.
+ */
+export const calculateUserRewardsOnBreathCompleting = () => {
+  const coins = getFromLocalStorage('coins') || 0;
+  const breathProgress = getFromLocalStorage('breath-progress') || 0;
+  const levelProgress = getFromLocalStorage('level-progress') || 0;
+  const level = getFromLocalStorage('level') || 1;
+
+  const updatedBreathProgress = breathProgress + 25;
+  const updatedLevelProgress = levelProgress + 5;
+
+  updatedBreathProgress >= 100
+    ? setToLocalStorage('breath-progress', 100)
+    : setToLocalStorage('breath-progress', updatedBreathProgress);
+
+  setToLocalStorage('coins', coins + 5);
+
+  if (updatedLevelProgress >= 100) {
+    setToLocalStorage('level-progress', updatedLevelProgress - 100);
+    setToLocalStorage('level', level + 1);
+  } else {
+    setToLocalStorage('level-progress', updatedLevelProgress);
+  }
+};
+
+/**
+ * The function calculates user rewards on meditation session complete.
+ */
+export const calculateUserRewardsOnMeditationCompleting = () => {
+  const coins = getFromLocalStorage('coins') || 0;
+  const meditationProgress = getFromLocalStorage('meditate-progress') || 0;
+  const levelProgress = getFromLocalStorage('level-progress') || 0;
+  const level = getFromLocalStorage('level') || 1;
+
+  const updatedMeditationProgress = meditationProgress + 25;
+  const updatedLevelProgress = levelProgress + 5;
+
+  updatedMeditationProgress >= 100
+    ? setToLocalStorage('meditate-progress', 100)
+    : setToLocalStorage('meditate-progress', updatedMeditationProgress);
+
+  setToLocalStorage('coins', coins + 5);
+
+  if (updatedLevelProgress >= 100) {
+    setToLocalStorage('level-progress', updatedLevelProgress - 100);
+    setToLocalStorage('level', level + 1);
+  } else {
+    setToLocalStorage('level-progress', updatedLevelProgress);
+  }
+};
